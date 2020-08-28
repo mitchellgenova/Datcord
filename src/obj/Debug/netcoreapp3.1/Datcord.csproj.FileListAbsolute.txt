@@ -1,0 +1,13 @@
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.exe
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.deps.json
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.runtimeconfig.json
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.runtimeconfig.dev.json
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.dll
+C:\Users\magen\Documents\Projects\Datcord\Datcord\bin\Debug\netcoreapp3.1\Datcord.pdb
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.csprojAssemblyReference.cache
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.AssemblyInfoInputs.cache
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.AssemblyInfo.cs
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.csproj.CoreCompileInputs.cache
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.dll
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.pdb
+C:\Users\magen\Documents\Projects\Datcord\Datcord\obj\Debug\netcoreapp3.1\Datcord.genruntimeconfig.cache
