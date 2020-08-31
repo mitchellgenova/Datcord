@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\magen\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\magen\\.nuget\\packages"
-    ]
-  }
-}
