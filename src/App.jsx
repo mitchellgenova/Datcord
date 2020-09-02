@@ -4,10 +4,12 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={datcord}></img>
-      </header>
+    <div className="app">
+      <h1>Hello Datcord users</h1>
+
+      {/* Header */}
+      {/* Sidebar */}
+      {/* React-Router -> Chat screen */}
     </div>
   );
 }
