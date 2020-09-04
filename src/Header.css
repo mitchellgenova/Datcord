@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: var(--discord-color);
+  color: white;
+}
+
+.header__left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
+.header__iconGroup {
+  display: flex;
+  align-self: center;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  background-color: var(--discord-color-search);
+}
+
+.header__search > input {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.header_searchIcon {
+  color: var(--discord-color-search-text-placeholder);
+}
+
+.header__search > input::placeholder {
+  color: var(--discord-color-search-text-placeholder);
+}

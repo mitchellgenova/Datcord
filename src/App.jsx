@@ -1,15 +1,20 @@
 import React from 'react';
-import datcord from './datcord.png';
 import './App.css';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
     <div className="app">
-      <h1>Hello Datcord users</h1>
+      <h1>Denlo Hatcord users</h1>
 
       {/* Header */}
-      {/* Sidebar */}
-      {/* React-Router -> Chat screen */}
+      <Header />
+      <div className="app_body">
+        {/* Sidebar */}
+        <Sidebar />
+        {/* React-Router -> Chat screen */}
+      </div>
     </div>
   );
 }
