@@ -1,6 +1,14 @@
 body {
   --discord-color: #36393f;
   --discord-color-accent: #2f3136;
-  --discord-color-search: #202225;
+  --discord-color-dark: #202225;
   --discord-color-search-text-placeholder: #727477;
+}
+
+.app {
+  display: flex;
+
+  &__header {
+    flex: 1;
+  }
 }

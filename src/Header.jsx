@@ -5,37 +5,32 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import SearchIcon from '@material-ui/icons/Search';
 import InboxIcon from '@material-ui/icons/Inbox';
 import HelpIcon from '@material-ui/icons/Help';
-import  { Avatar } from '@material-ui/core'
-import './Header.css';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import './Header.scss';
 
 function Header() {
   return (
     <div className="header">
       <div className="header__left">
-        { /* Avatars for logged in user | for us we gonna do the # icon */ }
-        {/* <Avatar
-          className="header__avatar"
-          alt="Display name"
-          src=""
-        ></Avatar> */}
-        { /* Time | for us we gonna show the channel name */ }
-        { /* Show mute button? Show pinned messages? Toggle members list buttons? */ }
+        Server name goes here <ArrowDropDownIcon/>
+      </div>
+      <div className="header__middle">
         <div>
           # Channel name goes here
         </div>
         <div className="header__iconGroup">
-          <NotificationsIcon></NotificationsIcon>
-          <BookmarkIcon></BookmarkIcon>
-          <PeopleIcon></PeopleIcon>
+          <NotificationsIcon/>
+          <BookmarkIcon/>
+          <PeopleIcon/>
         </div>
       </div>
       <div className="header__right">
         <div className="header__search">
-          <input placeholder="Search Datcord"></input>
+          <input placeholder="Search"></input>
           <SearchIcon className="header_searchIcon"></SearchIcon>
         </div>
-        <InboxIcon></InboxIcon>
-        <HelpIcon></HelpIcon>
+        <InboxIcon/>
+        <HelpIcon/>
       </div>
     </div>
   )
