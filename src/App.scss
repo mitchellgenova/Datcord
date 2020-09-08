@@ -3,12 +3,19 @@ body {
   --discord-color-accent: #2f3136;
   --discord-color-dark: #202225;
   --discord-color-search-text-placeholder: #727477;
+  --discord-color-green: #43b581;
 }
 
 .app {
   display: flex;
 
-  &__header {
+  &__container {
     flex: 1;
+  }
+
+  &__bodyLeft {
+    height: 100vh;
+    background-color: var(--discord-color-accent);
+    width: 240px;
   }
 }

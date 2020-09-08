@@ -6,11 +6,15 @@
   color: white;
   height: 48px;
 
+  // TODO: Update this later
+  border-bottom: 1px solid black;
+
   &__left {
     background-color: var(--discord-color-accent);
     display: flex;
     align-items: center;
     height: 100%;
+    width: 240px;
   }
 
   &__middle {
