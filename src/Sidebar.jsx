@@ -20,12 +20,9 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      Channels go here
       {servers.map(server => (
-        <div>
-          {/* {server.id} */}
-          {server.name}
-          <img src={server.serverImage}></img>
+        <div key={server.id}>
+          <img class="sidebar__serverImage" src={server.serverImage}></img>
         </div>
       ))}
     </div>

@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import UserShortcuts from './UserShortcuts';
 
 function App() {
+
   return (
     <div className="app">
       <Sidebar />

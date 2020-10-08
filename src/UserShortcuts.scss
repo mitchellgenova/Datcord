@@ -1,4 +1,9 @@
 .userShortcuts {
+  width: 100%;
+  display: flex;
+  color: white;
+  border-top: 1px solid black;
+
   &__status {
     color: var(--discord-color-green);
   }

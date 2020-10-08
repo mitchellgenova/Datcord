@@ -11,7 +11,8 @@ function UserShortcuts() {
         className="userShortcuts__avatar"
         alt="Display name"
         src=""
-      ></Avatar>
+      />
+      <h2>Mitchell</h2>
       <FiberManualRecordIcon className="userShortcuts__status"/>
     </div>
   )

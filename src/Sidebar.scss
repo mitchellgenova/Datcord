@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-
+  height: 100%;
   /* Temporary until replaced with apps */
   color: white;
+}
+
+.sidebar__serverImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 20px;
 }
