@@ -1,0 +1,72 @@
+.channelBar {
+  display: flex;
+  flex-direction: column;
+  flex: 0.20;
+  height: 100vh;
+  background-color: var(--discord-color-accent);
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--discord-color-accent);
+    color: white;
+    // TODO: Add color to global colors or replace
+    border-bottom: 1px solid #26282c;
+  }
+
+  &__channels {
+    flex: 1;
+  }
+
+  &__addChannel {
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__channelsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--discord-color-accent);
+    color: gray;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__voice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    background-color: var(--discord-color-accent);
+    padding: 10px;
+    border-top: 1px solid gray;
+  }
+
+  &__voiceInfo {
+    flex: 1;
+    padding: 10px;
+  }
+
+  &__voiceIcon,
+  &__voiceStatus {
+    color: var(--discord-color-green);
+  }
+
+  &__channelName {
+    font-size: smaller;
+  }
+
+  &__icon {
+    padding: 10px;
+  }
+}

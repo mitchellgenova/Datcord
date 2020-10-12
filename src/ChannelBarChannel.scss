@@ -1,0 +1,20 @@
+.channelBarChannel {
+  &__channelContainer {
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    background-color: var(--discord-color-accent);
+    color: gray;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+      background-color: #40464b;
+    }
+  }
+
+  &__hash {
+    font-size: 30px;
+    padding: 8px;
+  }
+}
