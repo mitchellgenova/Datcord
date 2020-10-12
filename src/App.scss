@@ -15,7 +15,8 @@ body {
   }
 
   &__body {
-    height: 100%;
+    //TODO: Update this later to not be static
+    height: calc(100% - 49px);
   }
 
   &__bodyLeft {
