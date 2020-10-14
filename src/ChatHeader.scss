@@ -1,0 +1,51 @@
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+  padding: 10px;
+
+  &__hash {
+    color: gray;
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  &__channelNameContainer {
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    color: gray;
+    background-color: var(--discord-color-accent);
+    border-radius: 3px;
+    padding: 3px;
+  }
+
+  &__searchInput {
+    background: transparent;
+    outline-width: 0;
+    color: white;
+    border: none;
+  }
+}

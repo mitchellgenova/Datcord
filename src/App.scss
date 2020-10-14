@@ -8,22 +8,4 @@ body {
 
 .app {
   display: flex;
-  height: 100%;
-
-  &__container {
-    flex: 1;
-  }
-
-  &__body {
-    //TODO: Update this later to not be static
-    height: calc(100% - 49px);
-  }
-
-  &__bodyLeft {
-    height: 100%;
-    background-color: var(--discord-color-accent);
-    width: 240px;
-    display: flex;
-    align-items: flex-end;
-  }
 }

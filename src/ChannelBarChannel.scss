@@ -1,4 +1,7 @@
 .channelBarChannel {
+  display: flex;
+  flex: 0.1;
+
   &__channelContainer {
     display: flex;
     padding-left: 15px;

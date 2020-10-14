@@ -42,7 +42,8 @@
     align-items: center;
   }
 
-  &__voice {
+  &__voice,
+  &__profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,5 +69,14 @@
 
   &__icon {
     padding: 10px;
+  }
+
+  &__profileInfo {
+    flex: 1;
+    padding: 10px;
+  }
+
+  &__profileUsername {
+    color: white;
   }
 }

@@ -1,0 +1,41 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  flex: 0.76;
+  background-color: var(--discord-color);
+  height: 100vh;
+
+  &__input {
+    color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    margin: 20px;
+    border-top: 1px solid gray;
+    // TODO: Add this to global colors or change
+    background-color: #474b53;
+  }
+
+  &__formInput {
+    padding: 10px;
+    background: transparent;
+    border: none;
+    outline-width: 0;
+    color: white;
+    width: 100%;
+  }
+  
+  &__form {
+    flex: 1;
+  }
+
+  &__inputButton {
+    display: none;
+  }
+
+  &__icon {
+    padding: 5px;
+  }
+}

@@ -3,7 +3,7 @@ import './App.scss';
 import ChannelBar from './ChannelBar';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import UserShortcuts from './UserShortcuts';
+import Chat from './Chat';
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
     <div className="app">
       <Sidebar />
       <ChannelBar />
+      <Chat />
       {/* <div className="app__container">
         <div className="app__header">
           <Header/>

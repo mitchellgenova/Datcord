@@ -1,9 +1,9 @@
 .sidebar {
   background-color: var(--discord-color-dark);
-  width: 72px;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  flex: 0.04;
   /* Temporary until replaced with apps */
   color: white;
 
