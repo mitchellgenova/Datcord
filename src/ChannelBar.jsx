@@ -13,10 +13,23 @@ import { selectUser } from './features/userSlice';
 import { Avatar } from '@material-ui/core';
 import './ChannelBar.scss';
 import db, { auth } from './firebase';
+import Ping from 'ping.js';
+
+let ping = 0;
 
 function ChannelBar() {
   const user = useSelector(selectUser);
   const [channels, setChannels] = useState([]);
+  const [isShown, setIsShown] = useState(false);
+  
+  var p = new Ping();
+  p.ping("https://firebase.google.com/", (err, data) => {
+    if(err) {
+      console.log("error loading resource", err);
+    }
+    console.log(data);
+    ping = data;
+  });
 
   useEffect(() => {
     db.collection('channels').onSnapshot(snapshot =>
@@ -61,7 +74,14 @@ function ChannelBar() {
       </div>
 
       <div className="channelBar__voice">
-        <SignalCellularAltIcon className="channelBar__voiceIcon" fontSize="large" />
+        <SignalCellularAltIcon 
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+          className="channelBar__voiceIcon" fontSize="large" />
+            {isShown && (
+              <div className="channelBar__pingLabel"
+              >{ping}</div>
+            )}
         <div className="channelBar__voiceInfo">
           <h3 className="channelBar__voiceStatus">Voice Connected</h3>
           <p className="channelBar__channelName">@ChannelName/Server</p>

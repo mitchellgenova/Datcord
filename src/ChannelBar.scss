@@ -63,6 +63,14 @@
     color: var(--discord-color-green);
   }
 
+  &__pingLabel {
+    padding: 0 5px 0 5px;
+    color: var(--discord-color-green);
+    position: absolute;
+    top: 88.5%;
+    left: 4.5%;
+  }
+
   &__channelName {
     font-size: smaller;
   }
