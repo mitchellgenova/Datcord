@@ -8,12 +8,17 @@ import MicIcon from '@material-ui/icons/Mic';
 import HeadsetIcon from '@material-ui/icons/Headset';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ChannelBarChannel from './ChannelBarChannel';
-import './ChannelBar.scss';
+import { useSelector } from "react-redux";
+import { selectUser } from './features/userSlice';
 import { Avatar } from '@material-ui/core';
+import './ChannelBar.scss';
+import { auth } from './firebase';
 
 function ChannelBar() {
+  const user = useSelector(selectUser);
+
   return (
-    <div class="channelBar">
+    <div className="channelBar">
       <div className="channelBar__top">
         <h3>Datcord</h3>
         <ExpandMoreIcon />
@@ -34,7 +39,7 @@ function ChannelBar() {
       <div className="channelBar__voice">
         <SignalCellularAltIcon className="channelBar__voiceIcon" fontSize="large" />
         <div className="channelBar__voiceInfo">
-          <h3 class="channelBar__voiceStatus">Voice Connected</h3>
+          <h3 className="channelBar__voiceStatus">Voice Connected</h3>
           <p className="channelBar__channelName">@ChannelName/Server</p>
         </div>
 
@@ -45,10 +50,10 @@ function ChannelBar() {
       </div>
 
       <div className="channelBar__profile">
-        <Avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Osteolaemus_tetraspis_-_Karlsruhe_Zoo_01.jpg/500px-Osteolaemus_tetraspis_-_Karlsruhe_Zoo_01.jpg" />
+        <Avatar onClick={() => auth.signOut()} src={user.photo} />
         <div className="channelBar__profileInfo">
-          <h3 className="channelBar__profileUsername">@Mitchell</h3>
-          <p>#thisIsMyId</p>
+          <h3 className="channelBar__profileUsername">{user.displayName}</h3>
+          <p>#{user.uid.substring(0, 5)}</p>
         </div>
 
         <div className="channelBar__profileIcons">

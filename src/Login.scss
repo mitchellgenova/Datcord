@@ -1,0 +1,19 @@
+.login {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+
+  &__signInButton {
+    width: 300px;
+    // TODO: Clean up these colors
+    background-color: #738adb !important;
+    color: #eff2f5 !important;
+    font-weight: 800 !important;
+  }
+
+  &__image {
+    object-fit: contain;
+    height: 300px;
+  }
+}

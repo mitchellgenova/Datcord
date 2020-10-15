@@ -1,28 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser } from './features/userSlice';
 import ChannelBar from './ChannelBar';
-import Header from './Header';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
+import Login from './Login';
+import { auth } from './firebase';
+import { login, logout } from './features/userSlice';
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(
+          login({
+            uid: authUser.uid,
+            photo: authUser.photoURL,
+            email: authUser.email,
+            displayName: authUser.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    })
+  }, [dispatch]);
 
   return (
     <div className="app">
-      <Sidebar />
-      <ChannelBar />
-      <Chat />
-      {/* <div className="app__container">
-        <div className="app__header">
-          <Header/>
-        </div>
-        <div className="app__body">
-          <div className="app__bodyLeft">
-            <UserShortcuts/>
-          </div>
-          React-Router -> Chat screen
-        </div>
-      </div> */}
+      {user ? (
+        <React.Fragment>
+          <Sidebar />
+          <ChannelBar />
+          <Chat />
+        </React.Fragment>
+      ): (
+        <Login />
+      )}
+      
     </div>
   );
 }

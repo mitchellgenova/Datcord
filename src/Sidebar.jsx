@@ -22,7 +22,7 @@ function Sidebar() {
     <div className="sidebar">
       {servers.map(server => (
         <div class="sidebar__serverContainer" key={server.id}>
-          <img class="sidebar__serverImage" src={server.serverImage}></img>
+          <img class="sidebar__serverImage" alt="Server icon" src={server.serverImage}></img>
         </div>
       ))}
     </div>
