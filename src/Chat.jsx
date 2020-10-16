@@ -5,7 +5,7 @@ import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import GifIcon from '@material-ui/icons/Gif';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import { selectChannelId, selectChannelName } from './features/appSlice';
+import { selectChannelId, selectChannelName, selectSeverId } from './features/appSlice';
 import { selectUser } from './features/userSlice';
 import Message from './Message';
 import './Chat.scss';
@@ -16,13 +16,16 @@ function Chat() {
   const user = useSelector(selectUser);
   const channelId = useSelector(selectChannelId);
   const channelName = useSelector(selectChannelName);
+  const serverId = useSelector(selectSeverId);
 
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    if (channelId) {
-      db.collection("channels")
+    if (serverId && channelId) {
+      db.collection("servers")
+      .doc(serverId)
+      .collection("channels")
         .doc(channelId)
         .collection("messages")
         .orderBy("timestamp")
@@ -30,7 +33,7 @@ function Chat() {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-  }, [channelId]);
+  }, [serverId, channelId]);
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -42,7 +45,7 @@ function Chat() {
   const sendMessage = e => {
     e.preventDefault();
     if (input.trim() !== "") {
-      db.collection("channels").doc(channelId).collection("messages")
+      db.collection('servers').doc(serverId).collection("channels").doc(channelId).collection("messages")
       .add({
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         message: input,

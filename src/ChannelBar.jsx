@@ -14,11 +14,14 @@ import { Avatar } from '@material-ui/core';
 import './ChannelBar.scss';
 import db, { auth } from './firebase';
 import Ping from 'ping.js';
+import { selectServerName, selectSeverId } from './features/appSlice';
 
 let ping = 0;
 
 function ChannelBar() {
   const user = useSelector(selectUser);
+  const serverName = useSelector(selectServerName);
+  const serverId = useSelector(selectSeverId);
   const [channels, setChannels] = useState([]);
   const [isShown, setIsShown] = useState(false);
   
@@ -32,21 +35,23 @@ function ChannelBar() {
   });
 
   useEffect(() => {
-    db.collection('channels').onSnapshot(snapshot =>
-      setChannels(
-        snapshot.docs.map(doc => ({
-          id: doc.id,
-          channel: doc.data(),
-        }))
-      )
-    );
-  }, []);
+    if (serverId) {
+      db.collection('servers').doc(serverId).collection('channels').onSnapshot(snapshot =>
+        setChannels(
+          snapshot.docs.map(doc => ({
+            id: doc.id,
+            channel: doc.data(),
+          }))
+        )
+      );
+    }
+  }, [serverId]);
 
   const handleAddChannel = () => {
     const channelName = prompt('Enter a new channel name');
 
     if (channelName) {
-      db.collection('channels').add({
+      db.collection('servers').doc(serverId).collection('channels').add({
         channelName: channelName,
       })
     }
@@ -55,7 +60,7 @@ function ChannelBar() {
   return (
     <div className="channelBar">
       <div className="channelBar__top">
-        <h3>Datcord</h3>
+        <h3>{serverName}</h3>
         <ExpandMoreIcon />
       </div>
       <div className="channelBar__channels">

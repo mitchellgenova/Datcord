@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Sidebar.scss';
+import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
 import db from './firebase';
+import ServerButton from './ServerButton';
 
 
 function Sidebar() {
@@ -8,7 +10,7 @@ function Sidebar() {
 
   useEffect(() => {
     // Run this code ONCE when the sidebar component loads
-    db.collection('rooms').onSnapshot(snapshot => (
+    db.collection('servers').onSnapshot(snapshot => (
       setServers(
         snapshot.docs.map(doc => ({
           id: doc.id,
@@ -18,13 +20,24 @@ function Sidebar() {
     ));
   }, [])
 
+  const handleAddServer = () => {
+    const serverName = prompt('Enter a new server name');
+
+    if (serverName) {
+      db.collection('servers').add({
+        name: serverName,
+      })
+    }
+  }
+
   return (
     <div className="sidebar">
-      {servers.map(server => (
-        <div class="sidebar__serverContainer" key={server.id}>
-          <img class="sidebar__serverImage" alt="Server icon" src={server.serverImage}></img>
-        </div>
-      ))}
+      <div className="sidebar__serverContainer">
+        {servers.map(server => (
+          <ServerButton key={server.id} name={server.name} id={server.id} image={server.serverImage} />
+        ))}
+        <AddCircleOutlineRoundedIcon className="sidebar__addServerIcon" onClick={handleAddServer}/>
+      </div>
     </div>
   )
 }

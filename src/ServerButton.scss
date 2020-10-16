@@ -1,0 +1,13 @@
+.serverButton {
+  &__serverContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__serverImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+}

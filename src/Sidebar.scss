@@ -1,20 +1,20 @@
 .sidebar {
   background-color: var(--discord-color-dark);
-  flex-direction: column;
-  align-items: center;
   height: 100vh;
   flex: 0.04;
-  /* Temporary until replaced with apps */
-  color: white;
 
   &__serverContainer {
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: auto;
   }
 
-  &__serverImage {
-    width: 48px;
-    height: 48px;
-    border-radius: 20px;
+  &__addServerIcon {
+    width: 48px !important;
+    height: 48px !important;
   }
 }
