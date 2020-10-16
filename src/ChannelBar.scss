@@ -28,6 +28,11 @@
     }
   }
 
+  &__expandIcon:hover {
+    cursor: pointer;
+    color: white;
+  }
+
   &__channelsHeader {
     display: flex;
     justify-content: space-between;
@@ -77,11 +82,19 @@
 
   &__icon {
     padding: 10px;
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
   }
 
   &__profileInfo {
     flex: 1;
     padding: 10px;
+  }
+
+  &__profileAvatar {
+    cursor: pointer;
   }
 
   &__profileUsername {

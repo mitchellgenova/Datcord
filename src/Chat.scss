@@ -37,10 +37,21 @@
 
   &__icon {
     padding: 5px;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
   }
 
   &__messages {
     flex: 1;
     overflow: auto;
+  }
+
+  &__media {
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
   }
 }

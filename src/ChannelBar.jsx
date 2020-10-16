@@ -165,7 +165,7 @@ function ChannelBar() {
       <div className="channelBar__channels">
         <div className="channelBar__channelsHeader">
           <div className="channelBar__header">
-            <ExpandMoreIcon />
+            <ExpandMoreIcon className="channelBar__expandIcon"/>
             <h4>Text channels</h4>
           </div>
           <AddIcon onClick={handleAddChannel} className="channelBar__addChannel"/>
@@ -198,7 +198,7 @@ function ChannelBar() {
       </div>
 
       <div className="channelBar__profile">
-        <Avatar onClick={() => auth.signOut()} src={user.photo} />
+        <Avatar onClick={() => auth.signOut()} src={user.photo} className="channelBar__profileAvatar"/>
         <div className="channelBar__profileInfo">
           <h3 className="channelBar__profileUsername">{user.displayName}</h3>
           <p>#{user.uid.substring(0, 5)}</p>

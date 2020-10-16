@@ -74,7 +74,7 @@ function Chat() {
       </div>
 
       <div className="chat__input">
-        <AddCircleRoundedIcon />
+        <AddCircleRoundedIcon className="chat__media"/>
         <form className="chat__form">
           <input
             value={input}
