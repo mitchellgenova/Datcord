@@ -5,11 +5,10 @@ import { setServerInfo } from './features/appSlice';
 
 
 function ServerButton({id, name, image}) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const defaultImageSrc = "https://www.vhv.rs/dpng/d/26-261299_discord-icon-png-transparent-png.png";
 
   const dispatchServerInfo = () => {
-    console.log('here');
     dispatch(
       setServerInfo({
         serverId: id,
