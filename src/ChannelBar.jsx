@@ -53,7 +53,7 @@ function ChannelBar() {
     ping = data;
   });
 
-  // Gets the servers
+  // Gets the channels for the specified server
   useEffect(() => {
     if (serverId) {
       db.collection('servers').doc(serverId).collection('channels').onSnapshot(snapshot =>
