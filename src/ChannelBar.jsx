@@ -82,7 +82,8 @@ function ChannelBar() {
     paper: {
       position: 'absolute',
       width: 400,
-      backgroundColor: 'white',
+      backgroundColor: 'var(--discord-color)',
+      color: 'white',
       padding: 10,
       border: '1px solid #000000',
       borderRadius: 5,
@@ -137,7 +138,7 @@ function ChannelBar() {
     <div className="channelBar">
       <div className="channelBar__top">
         <h3>{serverName}</h3>
-        <ExpandMoreIcon onClick={handleOpen} />
+        <ExpandMoreIcon className="channelBar__modalExpand" onClick={handleOpen} />
         <Modal
           open={open}
           onClose={handleClose}

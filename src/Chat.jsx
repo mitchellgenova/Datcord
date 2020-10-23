@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import GifIcon from '@material-ui/icons/Gif';
+import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import { selectChannelId, selectChannelName, selectSeverId } from './features/appSlice';
 import { selectUser } from './features/userSlice';
@@ -89,7 +90,9 @@ function Chat() {
         </form>
 
         <div className="chat__inputIcons">
-          <CardGiftcardIcon className="chat__icon" />
+          <SendRoundedIcon onClick={sendMessage} className="chat__icon"
+            Send Message
+          />
           <GifIcon className="chat__icon" />
           <EmojiEmotionsIcon className="chat__icon" />
         </div>

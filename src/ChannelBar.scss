@@ -33,6 +33,10 @@
     color: white;
   }
 
+  &__modalExpand:hover {
+    cursor: pointer;
+  }
+
   &__channelsHeader {
     display: flex;
     justify-content: space-between;
