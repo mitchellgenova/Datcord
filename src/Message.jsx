@@ -5,15 +5,24 @@ import { selectUser } from './features/userSlice';
 import Popover from '@material-ui/core/Popover';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import db from './firebase';
+import { makeStyles } from '@material-ui/core/styles';
 import './Message.scss'
 import { selectChannelId, selectSeverId } from './features/appSlice';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(1),
+  },
+}));
 
 function Message({timestamp, user, message, id}) {
   const currentUser = useSelector(selectUser);
   const serverId = useSelector(selectSeverId);
   const channelId = useSelector(selectChannelId);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles();
 
   let docRef = db.collection("servers").doc(serverId)
   .collection("channels").doc(channelId)
@@ -50,7 +59,7 @@ function Message({timestamp, user, message, id}) {
   };
 
   return (
-    <div className="message" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
+    <div className="message">
       <Avatar src={user.photo} />
       <div className="message__info">
         <h4>
@@ -61,18 +70,17 @@ function Message({timestamp, user, message, id}) {
       </div>
       <Popover
         id="mouse-over-popover"
-        // className={classes.popover}
-        // classes={{
-        //   paper: classes.paper,
-        // }}
+        classes={{
+          paper: classes.paper,
+        }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: 'top',
+          vertical: 'bottom',
           horizontal: 'left',
         }}
         onClose={handlePopoverClose}
@@ -83,6 +91,7 @@ function Message({timestamp, user, message, id}) {
           <CreateRoundedIcon onClick={editMessage} />
         </div>
       </Popover>
+      <MoreHorizIcon className="message__contextMenu" onClick={handlePopoverOpen} />
     </div>
   )
 }
