@@ -23,7 +23,16 @@ function Message({timestamp, user, message, id}) {
   const serverId = useSelector(selectSeverId);
   const channelId = useSelector(selectChannelId);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [input, setInput] = React.useState(message);
+  const [editMessageBoolean, setEditMessageBoolean] = React.useState(false);
   const classes = useStyles();
+  const inputRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (editMessageBoolean) {
+      inputRef.current.focus();
+    }
+  }, [editMessageBoolean]);
 
   let docRef = db.collection("servers").doc(serverId)
   .collection("channels").doc(channelId)
@@ -32,11 +41,13 @@ function Message({timestamp, user, message, id}) {
   const open = Boolean(anchorEl);
 
   const handlePopoverOpen = (event) => {
-    // Check if the user that is hovering the message, has the same user id as the person that sent the message
-    if (user.uid === currentUser.uid) {
-      setAnchorEl(event.currentTarget);
-    }
+    setAnchorEl(event.currentTarget);
   };
+
+  const isMessageSender = () => {
+    // Check if the user that is hovering the message, has the same user id as the person that sent the message
+    return user.uid === currentUser.uid;
+  }
 
   const handlePopoverClose = () => {
     setAnchorEl(null);
@@ -50,50 +61,78 @@ function Message({timestamp, user, message, id}) {
 
 
   const editMessage = () => {
-    docRef.update({
-      message: 'random updated message for now',
-    }).then(function() {
-        console.log("Document successfully edited!");
-    }).catch(function(error) {
-        console.error("Error editing document: ", error);
-    });
+    handlePopoverClose();
+    setEditMessageBoolean(true);
   };
 
+  const sendMessage = e => {
+    e.preventDefault();
+    if (input.trim() !== "") {
+      docRef.update({
+        message: input,
+      }).then(function() {
+          console.log("Document successfully edited!");
+      }).catch(function(error) {
+          console.error("Error editing document: ", error);
+      });
+    }
+
+    setEditMessageBoolean(false);
+  }
+  
+
   return (
-    <div className="message">
-      <Avatar src={user.photo} />
-      <div className="message__info">
-        <h4>
-          {user.displayName}
-          <span className="message__timestamp">{new Date(timestamp?.toDate()).toUTCString()}</span>
-        </h4>
-        <p>{message}</p>
-      </div>
-      <Popover
-        id="mouse-over-popover"
-        classes={{
-          paper: classes.paper,
-        }}
-        open={open}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <div>
-          <DeleteRoundedIcon className="message__delete" onClick={deleteMessage} />
-          <CreateRoundedIcon className="message__edit" onClick={editMessage} />
+    <React.Fragment>
+      <div className="message">
+        <Avatar src={user.photo} />
+        <div className="message__info">
+          <h4>
+            {user.displayName}
+            <span className="message__timestamp">{new Date(timestamp?.toDate()).toUTCString()}</span>
+          </h4>
+          {editMessageBoolean ? (
+            <form className="message__form">
+              <input
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                className="message__input"
+                ref={inputRef}
+              />
+              <button onClick={sendMessage} className="chat__inputButton" type="submit">
+                Send Message
+              </button>
+            </form>
+          ):
+            <p>{message}</p>
+          } 
         </div>
-      </Popover>
-      <MoreHorizIcon className="message__contextMenu" onClick={handlePopoverOpen} />
-    </div>
+        <Popover
+          id="mouse-over-popover"
+          classes={{
+            paper: classes.paper,
+          }}
+          open={open}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          onClose={handlePopoverClose}
+          disableRestoreFocus
+        >
+          <div>
+            <DeleteRoundedIcon className="message__delete" onClick={deleteMessage} />
+            <CreateRoundedIcon className="message__edit" onClick={editMessage} />
+          </div>
+        </Popover>
+        {isMessageSender() ? <MoreHorizIcon className="message__contextMenu" onClick={handlePopoverOpen} /> : null}
+      </div>
+    </React.Fragment>
+    
   )
 }
 

@@ -10,16 +10,13 @@
 
   &__info {
     margin-left: 20px;
+    flex: 1;
   }
 
   &__timestamp {
     color: gray;
     margin-left: 20px;
     font-size: x-small;
-  }
-
-  &__contextMenu {
-    margin-left: auto;
   }
 
   &__delete {
@@ -38,5 +35,18 @@
     &:hover {
       color: white;
     }
+  }
+
+  &__form {
+    width: 80%;
+  }
+  
+  &__input {
+    background-color: var(--discord-color-light);
+    padding: 10px;
+    border: none;
+    outline-width: 0;
+    color: white;
+    width: 100%;
   }
 }
