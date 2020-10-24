@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import ChatHeader from './ChatHeader';
 import { useSelector } from "react-redux";
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
-import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import GifIcon from '@material-ui/icons/Gif';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
@@ -31,7 +30,11 @@ function Chat() {
         .collection("messages")
         .orderBy("timestamp")
         .onSnapshot((snapshot) => 
-          setMessages(snapshot.docs.map((doc) => doc.data()))
+          setMessages(
+            snapshot.docs.map(doc => ({
+              id: doc.id,
+              data: doc.data(),
+          })))
         );
     }
   }, [serverId, channelId]);
@@ -63,12 +66,13 @@ function Chat() {
       <ChatHeader channelName={channelName} />
 
       <div className="chat__messages">
-          {messages.map((message, i) => (
+          {messages.map((message) => (
             <Message
-              timestamp={message.timestamp}
-              message={message.message}
-              user={message.user}
-              key={i}
+              timestamp={message.data.timestamp}
+              message={message.data.message}
+              user={message.data.user}
+              id={message.id}
+              key={message.id}
             />
           ))}
           <div ref={messagesEndRef} />

@@ -4,6 +4,10 @@
   padding: 20px;
   color: white;
 
+  &:hover {
+    background-color: var(--discord-color-accent);
+  }
+
   &__info {
     margin-left: 20px;
   }
@@ -12,5 +16,9 @@
     color: gray;
     margin-left: 20px;
     font-size: x-small;
+  }
+
+  &__popover {
+    position: absolute;
   }
 }
