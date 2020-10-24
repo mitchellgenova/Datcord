@@ -21,4 +21,22 @@
   &__contextMenu {
     margin-left: auto;
   }
+
+  &__delete {
+    color: var(--discord-color-red);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--discord-color-red-hover);
+    }
+  }
+
+  &__edit {
+    color: gray;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
 }

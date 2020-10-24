@@ -14,6 +14,7 @@ import { selectChannelId, selectSeverId } from './features/appSlice';
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
+    background: 'var(--discord-color-accent)'
   },
 }));
 
@@ -87,8 +88,8 @@ function Message({timestamp, user, message, id}) {
         disableRestoreFocus
       >
         <div>
-          <DeleteRoundedIcon onClick={deleteMessage} />
-          <CreateRoundedIcon onClick={editMessage} />
+          <DeleteRoundedIcon className="message__delete" onClick={deleteMessage} />
+          <CreateRoundedIcon className="message__edit" onClick={editMessage} />
         </div>
       </Popover>
       <MoreHorizIcon className="message__contextMenu" onClick={handlePopoverOpen} />
