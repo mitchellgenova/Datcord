@@ -4,13 +4,49 @@
   padding: 20px;
   color: white;
 
+  &:hover {
+    background-color: var(--discord-color-accent);
+  }
+
   &__info {
     margin-left: 20px;
+    flex: 1;
   }
 
   &__timestamp {
     color: gray;
     margin-left: 20px;
     font-size: x-small;
+  }
+
+  &__delete {
+    color: var(--discord-color-red);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--discord-color-red-hover);
+    }
+  }
+
+  &__edit {
+    color: gray;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__form {
+    width: 80%;
+  }
+  
+  &__input {
+    background-color: var(--discord-color-light);
+    padding: 10px;
+    border: none;
+    outline-width: 0;
+    color: white;
+    width: 100%;
   }
 }
