@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Message({timestamp, user, message, id}) {
+function Message({timestamp, user, message, id, edited}) {
   const currentUser = useSelector(selectUser);
   const serverId = useSelector(selectSeverId);
   const channelId = useSelector(selectChannelId);
@@ -65,15 +65,16 @@ function Message({timestamp, user, message, id}) {
     setEditMessageBoolean(true);
   };
 
-  const sendMessage = e => {
+  const sendEditedMessage = e => {
     e.preventDefault();
     if (input.trim() !== "") {
       docRef.update({
         message: input,
+        edited: true,
       }).then(function() {
-          console.log("Document successfully edited!");
+        console.log("Document successfully edited!");
       }).catch(function(error) {
-          console.error("Error editing document: ", error);
+        console.error("Error editing document: ", error);
       });
     }
 
@@ -98,12 +99,12 @@ function Message({timestamp, user, message, id}) {
                 className="message__input"
                 ref={inputRef}
               />
-              <button onClick={sendMessage} className="chat__inputButton" type="submit">
+              <button onClick={sendEditedMessage} className="chat__inputButton" type="submit">
                 Send Message
               </button>
             </form>
           ):
-            <p>{message}</p>
+            <p>{message} {edited && <span className="message__editedText">(edited)</span>}</p>
           } 
         </div>
         <Popover
@@ -132,7 +133,6 @@ function Message({timestamp, user, message, id}) {
         {isMessageSender() ? <MoreHorizIcon className="message__contextMenu" onClick={handlePopoverOpen} /> : null}
       </div>
     </React.Fragment>
-    
   )
 }
 

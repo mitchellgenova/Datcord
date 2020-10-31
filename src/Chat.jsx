@@ -71,6 +71,7 @@ function Chat() {
               timestamp={message.data.timestamp}
               message={message.data.message}
               user={message.data.user}
+              edited={message.data.edited}
               id={message.id}
               key={message.id}
             />
