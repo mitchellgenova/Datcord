@@ -10,7 +10,12 @@ import { selectUser } from './features/userSlice';
 import Message from './Message';
 import './Chat.scss';
 import db from './firebase';
-import firebase from 'firebase';
+import firebase, { app } from 'firebase';
+import FileUploader from 'react-firebase-file-uploader';
+import handleUploadStart from './firebase';
+import handleUploadSuccess from './firebase';
+import App from './firebase';
+
 
 function Chat() {
   const user = useSelector(selectUser);
@@ -59,12 +64,17 @@ function Chat() {
 
     setInput("");
   }
-  
+
+
+  const fileUpload = () => {
+    
+  }
 
   return (
     <div className="chat">
+      
       <ChatHeader channelName={channelName} />
-
+      
       <div className="chat__messages">
           {messages.map((message) => (
             <Message
@@ -74,13 +84,20 @@ function Chat() {
               edited={message.data.edited}
               id={message.id}
               key={message.id}
+              // file={App.state.image}
             />
           ))}
           <div ref={messagesEndRef} />
       </div>
-
+      
       <div className="chat__input">
-        <AddCircleRoundedIcon className="chat__media"/>
+      <FileUploader
+          accept="image/*"
+          name='image'
+          storageRef={firebase.storage().ref('images')}
+          onUploadStart={handleUploadStart}
+          onUploadSuccess={handleUploadSuccess}
+        />
         <form className="chat__form">
           <input
             value={input}
