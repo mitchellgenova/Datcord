@@ -106,7 +106,7 @@ function Message({timestamp, user, message, id, edited, imageUrl}) {
           ):
             <React.Fragment>
               <p>{message} {edited && <span className="message__editedText">(edited)</span>}</p>
-              {imageUrl && <img alt="message image" src={imageUrl}></img>}
+              {imageUrl && <img alt="message uploaded" src={imageUrl}></img>}
             </React.Fragment>
           } 
         </div>

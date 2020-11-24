@@ -126,7 +126,7 @@ function Chat() {
         {showSpinner && <CircularProgress className="chat__spinnerProgress" color="secondary"/>}
         {imageUrl && 
           <React.Fragment>
-            <img className="chat__imagePreview" src={imageUrl}></img>
+            <img className="chat__imagePreview" alt="preview" src={imageUrl}></img>
             <ClearIcon onClick={clearImageUrl}/>
           </React.Fragment>
         }
