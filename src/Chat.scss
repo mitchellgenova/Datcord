@@ -54,4 +54,14 @@
       color: white;
     }
   }
+
+  &__imagePreview {
+    max-width: 100px;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+  &__successIcon {
+    color: var(--discord-color-green);
+  }
 }
