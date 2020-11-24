@@ -1,5 +1,4 @@
-import react from 'react';
-import firebase, { app } from "firebase";
+import firebase from "firebase";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -19,38 +18,5 @@ const db = firebaseApp.firestore();
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 
-class App extends react.Component {
-  state = {
-    image: '',
-    imageURL: '',
-    isUploading: false,
-    progress: 0
-  }
-
-  handleUploadStart = () => {
-    this.setState({
-      progress: 0
-    });
-    console.log('upload start');
-  }
-
-  handleUploadSuccess = filename => {
-    this.setState({
-      image: filename,
-      progress: 100
-    })
-
-  firebase.storage().ref('images').child(filename).getDownloadURL
-    .then(url =>  {
-      this.setState({
-        imageURL: url
-      })
-      console.log('here');
-    })
-  }
-}
-
-
-
-export { auth, provider, App};
+export { auth, provider};
 export default db;
