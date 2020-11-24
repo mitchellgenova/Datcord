@@ -7,6 +7,7 @@ import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import { selectChannelId, selectChannelName, selectSeverId } from './features/appSlice';
 import { selectUser } from './features/userSlice';
+import { makeStyles } from '@material-ui/core/styles';
 import Message from './Message';
 import './Chat.scss';
 import db from './firebase';
@@ -14,9 +15,40 @@ import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 import ClearIcon from '@material-ui/icons/Clear';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: 'relative',
+  },
+  buttonSuccess: {
+    backgroundColor: 'var(--discord-color-green)',
+  },
+  fabProgress: {
+    color: 'var(--discord-color-green)',
+    position: 'absolute',
+    top: -1,
+    left: -1,
+    zIndex: 1,
+  },
+  buttonProgress: {
+    color: 'var(--discord-color-green)',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
+}));
 
 
 function Chat() {
+  const classes = useStyles();
   const user = useSelector(selectUser);
   const channelId = useSelector(selectChannelId);
   const channelName = useSelector(selectChannelName);
@@ -26,6 +58,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [imageUrl, setImageUrl] = useState();
   const [showSpinner, setShowSpinner] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     if (serverId && channelId) {
@@ -66,14 +99,18 @@ function Chat() {
 
     setInput("");
     setImageUrl("");
+    setShowSuccess(false);
   }
 
   const clearImageUrl = () => {
     setImageUrl("");
+    setShowSuccess(false);
   }
 
   const handleUploadStart = () => {
     setShowSpinner(true);
+    setShowSuccess(false);
+    setImageUrl("");
   }
 
   const handleUploadSuccess = filename => {
@@ -86,6 +123,7 @@ function Chat() {
         setImageUrl(url);
       });
       setShowSpinner(false);
+      setShowSuccess(true);
   };
 
   const handleUploadError = () => {
@@ -110,20 +148,23 @@ function Chat() {
         <div ref={messagesEndRef} />
       </div>
       <div className="chat__input">
-        <label>
-          <AddCircleRoundedIcon/>
-          <FileUploader
-            accept="image/*"
-            storageRef={firebase.storage().ref('images')}
-            onUploadStart={handleUploadStart}
-            onUploadSuccess={handleUploadSuccess}
-            onUploadError={handleUploadError}
-            randomizeFilename
-            hidden
-            disabled={!channelId}
-          />
-        </label>
-        {showSpinner && <CircularProgress className="chat__spinnerProgress" color="secondary"/>}
+        <div className={classes.root}>
+          <label className={classes.wrapper}>
+            
+            {(showSuccess && <CheckCircleRoundedIcon className="chat__successIcon"/>) || <AddCircleRoundedIcon/>}
+            <FileUploader
+              accept="image/*"
+              storageRef={firebase.storage().ref('images')}
+              onUploadStart={handleUploadStart}
+              onUploadSuccess={handleUploadSuccess}
+              onUploadError={handleUploadError}
+              randomizeFilename
+              hidden
+              disabled={!channelId}
+            />
+            {showSpinner && <CircularProgress size={25} className={classes.fabProgress} color="secondary"/>}
+          </label>
+        </div>
         {imageUrl && 
           <React.Fragment>
             <img className="chat__imagePreview" alt="preview" src={imageUrl}></img>
