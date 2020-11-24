@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Message({timestamp, user, message, id, edited}) {
+function Message({timestamp, user, message, id, edited, imageUrl}) {
   const currentUser = useSelector(selectUser);
   const serverId = useSelector(selectSeverId);
   const channelId = useSelector(selectChannelId);
@@ -104,7 +104,10 @@ function Message({timestamp, user, message, id, edited}) {
               </button>
             </form>
           ):
-            <p>{message} {edited && <span className="message__editedText">(edited)</span>}</p>
+            <React.Fragment>
+              <p>{message} {edited && <span className="message__editedText">(edited)</span>}</p>
+              {imageUrl && <img alt="message image" src={imageUrl}></img>}
+            </React.Fragment>
           } 
         </div>
         <Popover

@@ -30,7 +30,8 @@ class App extends react.Component {
   handleUploadStart = () => {
     this.setState({
       progress: 0
-    })
+    });
+    console.log('upload start');
   }
 
   handleUploadSuccess = filename => {
@@ -40,9 +41,12 @@ class App extends react.Component {
     })
 
   firebase.storage().ref('images').child(filename).getDownloadURL
-    .then(url => this.setState({
-      imageURL: url
-    }))
+    .then(url =>  {
+      this.setState({
+        imageURL: url
+      })
+      console.log('here');
+    })
   }
 }
 

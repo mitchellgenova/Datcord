@@ -25,6 +25,7 @@ function Chat() {
 
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const [imageUrl, setImageUrl] = useState();
 
   useEffect(() => {
     if (serverId && channelId) {
@@ -59,10 +60,12 @@ function Chat() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         message: input,
         user: user,
+        imageUrl: imageUrl,
       });
     }
 
     setInput("");
+    setImageUrl("");
   }
 
 
@@ -70,11 +73,30 @@ function Chat() {
     
   }
 
+  const log = () => {
+    console.log('test');
+  }
+
+  const logFinished = () => {
+    console.log('log finished');
+  }
+
+  const handleUploadSuccess = filename => {
+    console.log(filename)
+    // this.setState({ avatar: filename, progress: 100, isUploading: false });
+    firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL()
+      .then(url => {
+        setImageUrl(url);
+      });
+  };
+
   return (
     <div className="chat">
-      
       <ChatHeader channelName={channelName} />
-      
       <div className="chat__messages">
           {messages.map((message) => (
             <Message
@@ -84,6 +106,7 @@ function Chat() {
               edited={message.data.edited}
               id={message.id}
               key={message.id}
+              imageUrl={message.data.imageUrl}
               // file={App.state.image}
             />
           ))}
@@ -91,13 +114,14 @@ function Chat() {
       </div>
       
       <div className="chat__input">
-      <FileUploader
+        <FileUploader
           accept="image/*"
           name='image'
           storageRef={firebase.storage().ref('images')}
-          onUploadStart={handleUploadStart}
+          onUploadStart={log}
           onUploadSuccess={handleUploadSuccess}
         />
+        {imageUrl && <img className="chat__imagePreview" src={imageUrl}></img>}
         <form className="chat__form">
           <input
             value={input}
