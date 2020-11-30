@@ -150,7 +150,6 @@ function Chat() {
       <div className="chat__input">
         <div className={classes.root}>
           <label className={classes.wrapper}>
-            
             {(showSuccess && <CheckCircleRoundedIcon className="chat__successIcon"/>) || <AddCircleRoundedIcon/>}
             <FileUploader
               accept="image/*"
