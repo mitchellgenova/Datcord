@@ -1,14 +1,10 @@
 import React from 'react'
 import { Button } from '@material-ui/core';
-import { auth, provider } from './firebase';
 import Datcord from './images/datcord.png';
 import './Login.scss'
 
-function Login() {
-  const signIn = () => {
-    // do clever google login shizzz....
-    auth.signInWithPopup(provider).catch((error) => alert(error.message));
-  }
+function Login({ signIn }) {
+  
   return (
     <div className="login">
       <div className="login__logo">

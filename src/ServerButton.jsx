@@ -19,7 +19,7 @@ function ServerButton({id, name, image}) {
   return (
     <div className="serverButton" onClick={dispatchServerInfo}>
       <div className="serverButton__serverContainer">
-          <img className="serverButton__serverImage" alt="Server icon" src={image || defaultImageSrc}></img>
+        <img className="serverButton__serverImage" alt="Server icon" src={image || defaultImageSrc}></img>
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ import ChannelBar from './ChannelBar';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
 import Login from './Login';
-import { auth } from './firebase';
+import { auth, provider } from './firebase';
 import { login, logout } from './features/userSlice';
 
 function App() {
@@ -30,6 +30,11 @@ function App() {
     })
   }, [dispatch]);
 
+  const signIn = () => {
+    // do clever google login shizzz....
+    auth.signInWithPopup(provider).catch((error) => alert(error.message));
+  }
+
   return (
     <div className="app">
       {user ? (
@@ -39,7 +44,7 @@ function App() {
           <Chat />
         </React.Fragment>
       ): (
-        <Login />
+        <Login signIn={signIn} />
       )}
     </div>
   );
