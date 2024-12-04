@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './index.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from '../stores/userSlice';
-import ChannelBar from '../components/ChannelBar';
+import ChannelBar from '../components/ChannelBar/ChannelBar';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Chat from '../components/Chat/Chat';
 import Login from '../components/Login/Login';

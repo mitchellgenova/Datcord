@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Specify ECMAScript target version
+    "lib": ["DOM", "DOM.Iterable", "ES6"], // Libraries available during compilation
+    "jsx": "react-jsx", // JSX factory for React 17+
+    "module": "ESNext", // Module system to use
+    "moduleResolution": "Node", // Resolve modules like Node.js
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Allows default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Ensure file name case consistency
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "resolveJsonModule": true, // Allow importing .json files
+    "isolatedModules": true, // Ensure compatibility with Babel
+    "noEmit": true, // Don't output compiled files
+    "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
+  },
+  "include": ["src"], // Files to include in the compilation
+  "exclude": ["node_modules", "build"], // Files and folders to exclude
+}

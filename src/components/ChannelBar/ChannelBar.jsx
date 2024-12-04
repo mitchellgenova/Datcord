@@ -9,7 +9,7 @@ import CallIcon from '@material-ui/icons/Call';
 import MicIcon from '@material-ui/icons/Mic';
 import HeadsetIcon from '@material-ui/icons/Headset';
 import SettingsIcon from '@material-ui/icons/Settings';
-import ChannelBarChannel from './ChannelBarChannel';
+import ChannelBarChannel from './ChannelBarChannel/ChannelBarChannel';
 import { useSelector } from "react-redux";
 import { selectUser } from '../../stores/userSlice';
 import { Avatar } from '@material-ui/core';
