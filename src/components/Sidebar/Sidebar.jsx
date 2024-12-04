@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Sidebar.scss';
 import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
-import db from './firebase';
-import ServerButton from './ServerButton';
+import db from '../../config/firebase';
+import ServerButton from './ServerButton/ServerButton';
 
 
 function Sidebar() {

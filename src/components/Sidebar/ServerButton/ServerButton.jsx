@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import './ServerButton.scss'
-import { setServerInfo } from './features/appSlice';
+import { setServerInfo } from '../../../stores/appSlice';
 
 
 function ServerButton({id, name, image}) {

@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import './App.scss';
+import './index.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from './features/userSlice';
-import ChannelBar from './ChannelBar';
-import Sidebar from './Sidebar';
-import Chat from './Chat';
-import Login from './Login';
-import { auth, provider } from './firebase';
-import { login, logout } from './features/userSlice';
+import { selectUser } from '../stores/userSlice';
+import ChannelBar from '../components/ChannelBar';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Chat from '../components/Chat/Chat';
+import Login from '../components/Login/Login';
+import { auth, provider } from '../config/firebase';
+import { login, logout } from '../stores/userSlice';
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const isAuthenticated = !!user;
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -31,19 +32,19 @@ function App() {
   }, [dispatch]);
 
   const signIn = () => {
-    // do clever google login shizzz....
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
   }
 
   return (
     <div className="app">
-      {user ? (
+      {isAuthenticated && (
         <React.Fragment>
           <Sidebar />
           <ChannelBar />
           <Chat />
         </React.Fragment>
-      ): (
+      )}
+      {!isAuthenticated && (
         <Login signIn={signIn} />
       )}
     </div>

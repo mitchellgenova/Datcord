@@ -1,15 +1,15 @@
 import { Avatar } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from "react-redux";
-import { selectUser } from './features/userSlice';
+import { selectUser } from '../../../stores/userSlice';
 import Popover from '@material-ui/core/Popover';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import db from './firebase';
+import db from '../../../config/firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import './Message.scss'
-import { selectChannelId, selectSeverId } from './features/appSlice';
+import { selectChannelId, selectSeverId } from '../../../stores/appSlice';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
-import { selectChannelName, setServerInfo } from './features/appSlice';
+import { selectChannelName, setServerInfo } from '../../stores/appSlice';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt';
@@ -11,16 +11,16 @@ import HeadsetIcon from '@material-ui/icons/Headset';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ChannelBarChannel from './ChannelBarChannel';
 import { useSelector } from "react-redux";
-import { selectUser } from './features/userSlice';
+import { selectUser } from '../../stores/userSlice';
 import { Avatar } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import './ChannelBar.scss';
-import db, { auth } from './firebase';
+import db, { auth } from '../../config/firebase';
 import Ping from 'ping.js';
-import { selectServerName, selectSeverId } from './features/appSlice';
+import { selectServerName, selectSeverId } from '../../stores/appSlice';
 
 let ping = 0;
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import './ChannelBarChannel.scss'
-import { setChannelInfo } from './features/appSlice';
+import { setChannelInfo } from '../../../stores/appSlice';
 
 function ChannelBarChannel({ id, channelName }) {
   const dispatch = useDispatch()
